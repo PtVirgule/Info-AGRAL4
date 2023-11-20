@@ -8,7 +8,7 @@ SEPARATOR = " "
 df = pd.read_csv(CSV_FILE,sep=SEPARATOR)  # on a besoin de encoding??, encoding='utf_8')#latin-1')  # endocing permet éviter erreur ("UnicodeDecodeError: 'utf-8' codec...)"and to ignore the byte#dtype=np.dtype('unicode') inutile
 
 # import fichier liste_alim
-CSV_FILE2 = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\Table_CIQUAL_reduite2.7.xlsx"
+CSV_FILE2 = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\Table_CIQUAL_reduite2.9.xlsx"
 SEPARATOR2 = "\t"
 df2 = pd.read_excel(CSV_FILE2)
 
@@ -79,9 +79,8 @@ def dic_alim_correspondance():
 
     return dic_alim_similaire
 
-
-a=dic_alim_correspondance()
-print(a)
+dic_alim_corresp = dic_alim_correspondance()
+print(dic_alim_corresp)
 # tomate crue ressort tomate
 # pb : lait de chèvre ressort lait
 # pb par rapport à béchamelle et vinaigrette : regarder quels sont les ingrédients dans les ingrédietns des recettes qui ne sont pas dans les clés de 'dic_alim_similaire'
@@ -93,7 +92,7 @@ print(a)
 # vérifie que tous les ingrédients des recettes soient dans la liste d'ingrédients original
 p=0
 for i in range(len(liste_ingre_issus_recette) - 1):
-    if liste_ingre_issus_recette[i] not in a:
+    if liste_ingre_issus_recette[i] not in dic_alim_corresp:
         print(liste_ingre_issus_recette[i])
         p=p+1
 print(p)

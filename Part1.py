@@ -5,9 +5,9 @@ import re  # sert pour séparer dans grammage : avoir d'un coté 100 et de l'aut
 CSV_FILE = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\recettes.csv"
 SEPARATOR = " "
 df = pd.read_csv(CSV_FILE, sep=SEPARATOR, header=(0))  # on a besoin de encoding??, encoding='utf_8')#latin-1')  # endocing permet éviter erreur ("UnicodeDecodeError: 'utf-8' codec...)"and to ignore the byte#dtype=np.dtype('unicode') inutile
-print(df.keys())
+
 # import fichier liste_alim
-CSV_FILE2 = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\Table_CIQUAL_reduite2.7.xlsx"
+CSV_FILE2 = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\Table_CIQUAL_reduite2.9.xlsx"
 SEPARATOR2 = "\t"
 df2 = pd.read_excel(CSV_FILE2)
 
