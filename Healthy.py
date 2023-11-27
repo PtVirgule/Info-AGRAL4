@@ -10,7 +10,7 @@ df = pd.read_csv(CSV_FILE,
                  sep=SEPARATOR)  # on a besoin de encoding??, encoding='utf_8')#latin-1')  # endocing permet éviter erreur ("UnicodeDecodeError: 'utf-8' codec...)"and to ignore the byte#dtype=np.dtype('unicode') inutile
 
 # import fichier liste_alim
-CSV_FILE2 = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\Table_CIQUAL_reduite2.9.xlsx"
+CSV_FILE2 = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\Table_CIQUAL_reduite2.10.xlsx"
 SEPARATOR2 = "\t"
 df2 = pd.read_excel(CSV_FILE2)
 
@@ -31,7 +31,7 @@ class Ingredient():
 li = donne_liste_recette()
 dic_alim_corresp = dic_alim_correspondance()
 # remplir dictionnaire qui prend en valeur le nom des ingédients à ajouter en nombre ( 1 oeuf) et sa correspondance en poids : la velur en poids sera toujours pour une unite
-dic_corresp_poids = {'Oeuf': 55, 'Pain burger': 330, 'Pain de mie': 35, 'Citron': 90, 'Nori': 3,
+dic_corresp_poids = {'Oeuf': 55, ' Oeuf': 55 , 'Pain burger': 330, 'Pain de mie': 35, 'Citron': 90, 'Nori': 3,
                      'Saucisse de Francfort': 70, 'Oeuf dur': 55, 'Vanille': 6, 'Tortilla': 92, "Jaune d'oeuf": 20,
                      'Avocat': 200, 'Citron vert': 90, 'Jambon': 80, 'Banane': 120, 'Orange': 150, "Pomme": 145,
                      "Kiwi": 100, "Saucisse": 50, 'Pâte brisée': 250, 'Pâte sablée': 265, 'Escargots': 30,
@@ -53,6 +53,8 @@ def est_healthy(nom_recette):
             # on définit quantite_energie une variable qui prend la quantité d'énergie pour 100g de l'aliment i
             quantite_energie = li[index_recette].ingredient[i].quantite
             if li[index_recette].ingredient[i].unite != 'g' and li[index_recette].ingredient[i].unite != 'ml':
+                print(li[index_recette].ingredient[i].nom)
+                print(dic_alim_corresp[li[index_recette].ingredient[i].nom])
                 quantite_energie = dic_corresp_poids[dic_alim_corresp[li[index_recette].ingredient[i].nom]]*li[index_recette].ingredient[i].quantite
 
             nombre_kcal_energie = nombre_kcal_energie + float(quantite_energie) * (
