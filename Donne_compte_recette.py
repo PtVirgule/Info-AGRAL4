@@ -3,8 +3,8 @@ from Healthy import est_healthy
 from Creation_dic_recette_indexe2 import donne_dico_index
 from Part1 import donne_liste_recette
 
-#dic = {1: ['Salade', 'Pizza'], 2: ['Mayonnaise', 'Gnockie', 'Cookie'], 3: ['Repas']}
-#dic2 = {1: ['Pizza Végétarienne'], 2: ['Salade', 'Pizza'], 3: ['Bruschetta', 'Quiche aux Légumes'], 4: ['Potage de Légumes']}
+# dic = {1: ['Salade', 'Pizza'], 2: ['Mayonnaise', 'Gnockie', 'Cookie'], 3: ['Repas']}
+# dic2 = {1: ['Pizza Végétarienne'], 2: ['Salade', 'Pizza'], 3: ['Bruschetta', 'Quiche aux Légumes'], 4: ['Potage de Légumes']}
 
 
 liste_ingre = [' Champignons', 'Tofu', 'Poulet', ' Riz basmati cuit','Quinoa']
