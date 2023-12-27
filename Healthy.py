@@ -1,32 +1,14 @@
 import pandas as pd
 from Part1 import donne_liste_recette
-from Part1 import affiche_liste_li
 from Correspondance_ingredient2 import dic_alim_correspondance
 
-# import fichier recette.csv
-CSV_FILE = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\recettes.csv"
-SEPARATOR = " "
-df = pd.read_csv(CSV_FILE,
-                 sep=SEPARATOR)  # on a besoin de encoding??, encoding='utf_8')#latin-1')  # endocing permet éviter erreur ("UnicodeDecodeError: 'utf-8' codec...)"and to ignore the byte#dtype=np.dtype('unicode') inutile
 
 # import fichier liste_alim
 CSV_FILE2 = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\Table_CIQUAL_reduite2.10.xlsx"
 SEPARATOR2 = "\t"
 df2 = pd.read_excel(CSV_FILE2)
 
-
-class Recette():
-    def __init__(self, nom_recette="", ingredient=[]):
-        self.nom_recette = nom_recette
-        self.ingredient = ingredient
-
-
-class Ingredient():
-    def __init__(self, nom="", quantite="", unite=""):
-        self.nom = nom
-        self.quantite = quantite
-        self.unite = unite
-
+#TODO mettre à jour
 
 li = donne_liste_recette()
 dic_alim_corresp = dic_alim_correspondance()
@@ -39,7 +21,7 @@ dic_corresp_poids = {'Oeuf': 55, ' Oeuf': 55, 'Pain burger': 330, 'Pain de mie':
                      'Escargot': 30,
                      'Pâte à pizza': 250, 'Pâte à pizza cuite': 250, 'Escalope de poulet': 170, 'Confit de canard': 260,
                      'Citron confit': 90,
-                     'Pâte feuilletée. cuite': 250}
+                     'Pâte feuilletée': 250}
 
 
 # les noms de certains ingédients dans dic_alim_correspondance ne vont pas
@@ -47,7 +29,8 @@ dic_corresp_poids = {'Oeuf': 55, ' Oeuf': 55, 'Pain burger': 330, 'Pain de mie':
 def est_healthy(nom_recette):
     index_recette = -1
     nombre_kcal_energie = 0
-    for i in range(1, len(li) + 1):  # len(li) prend les valeur 1 à 271 pour correspondre aux valeur dans table_ciqual
+    #faut mettre +1 à len(li)??
+    for i in range(1, len(li)):  # len(li) prend les valeur 1 à 271 pour correspondre aux valeur dans table_ciqual
         if nom_recette == li[i].nom_recette:
             index_recette = i
             break
@@ -86,8 +69,8 @@ for i in range(len(li)):
         liste_recette_healthy.append(li[i].nom_recette)
     else:
         liste_recette_non_healthy.append(li[i].nom_recette)
-print(liste_recette_non_healthy)
-print(liste_recette_healthy)
+#print(liste_recette_non_healthy)
+#print(liste_recette_healthy)
 
 # Affichage et calcul du nombre de recette dans chaque catégorie
 compte_helthy = 0
@@ -97,5 +80,5 @@ for i in range(len(li)):
         compte_helthy += 1
     else:
         compte_non_healthy += 1
-print("Nb recette healthy : " + str(compte_helthy))
-print("Nb recette Normale / Non healthy : " + str(compte_non_healthy))
+#print("Nb recette healthy : " + str(compte_helthy))
+#print("Nb recette Normale / Non healthy : " + str(compte_non_healthy))
