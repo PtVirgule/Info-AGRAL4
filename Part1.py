@@ -7,7 +7,7 @@ SEPARATOR = " "
 df = pd.read_csv(CSV_FILE, sep=SEPARATOR, header=(0))  # on a besoin de encoding??, encoding='utf_8')#latin-1')  # endocing permet éviter erreur ("UnicodeDecodeError: 'utf-8' codec...)"and to ignore the byte#dtype=np.dtype('unicode') inutile
 
 # import fichier liste_alim
-CSV_FILE2 = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\Table_CIQUAL_reduite2.9.xlsx"
+CSV_FILE2 = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\Table_CIQUAL_reduite2.10.xlsx"
 SEPARATOR2 = "\t"
 df2 = pd.read_excel(CSV_FILE2)
 
@@ -16,6 +16,7 @@ df2 = pd.read_excel(CSV_FILE2)
 class Recette():
     def __init__(self, nom_recette="", ingredient=[]):
         self.nom_recette = nom_recette
+        self.nombre_ingre = len(ingredient)
         self.ingredient = ingredient
 
 
@@ -29,10 +30,8 @@ class Ingredient():
 # partie 3.0
 # on crée une liste remplie de toutes les recettes
 
-li = []  # liste vide qui prendra les recettes
-
-
 def donne_liste_recette():
+    li = []
     # on veut reformatted note fichier pour ensuite remplir li
     # il faut mettre l'encodage encoding=uft8 pour avoir les accents normalement
     with open(r'C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base données2\recettes.csv', 'r',
@@ -67,9 +66,13 @@ def donne_liste_recette():
                     ingredient.unite = ligne_grammage_unite
                     recette.ingredient.append(ingredient)
 
-                li.append(recette)
-    # partie 3.2 : algo qui classe les recettes dans un dictionnaire selon le nombre d'ingrédients que l'utilisateur veut
 
+                #on veut faire une liste des noms de recettes déjà existantes dans li
+                liste_nom_recette = []
+                for i in range (len(li)):
+                    liste_nom_recette.append(li[i].nom_recette)
+                if recette.nom_recette not in liste_nom_recette:#pour éviter qu'il y ait des recettes en doublons
+                    li.append(recette)
     return li
 
 def affiche_liste_li(li):  # permet d'aaficher de manière compréhensible la liste d'ingrédient li
@@ -79,3 +82,10 @@ def affiche_liste_li(li):  # permet d'aaficher de manière compréhensible la li
             print(vars(i), end=" ")
         print()
 
+li=donne_liste_recette()
+#print(affiche_liste_li(li))
+
+#affiche_liste_li(li)
+
+
+donne_liste_recette()
