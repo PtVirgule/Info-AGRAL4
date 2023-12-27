@@ -8,7 +8,6 @@ CSV_FILE2 = r"C:\Users\virgi\Desktop\AGRAL\AGRAL4\Informatique\Projet base donn√
 SEPARATOR2 = "\t"
 df2 = pd.read_excel(CSV_FILE2)
 
-#TODO mettre √† jour
 
 li = donne_liste_recette()
 dic_alim_corresp = dic_alim_correspondance()
