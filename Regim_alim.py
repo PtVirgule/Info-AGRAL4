@@ -2,9 +2,6 @@ import pandas as pd
 #from Creation_dic_recette_indexe4 import modif_liste_ingre
 from Correspondance_ingredient2 import dic_alim_correspondance
 
-##TODO avancer fichier
-##TODO new version
-
 
 dic_alim_corresp = dic_alim_correspondance()
 
